@@ -15,6 +15,12 @@ class Polygon {
 
 class Triangle extends Polygon {
     get isValid(){
+        if(this.sides.length !== 3){
+            return false
+        }
+        if(!Array.isArray(this.sides)){
+            return false
+        }
         let sideSums = this.sides.map((side,index)=>side+this.sides[(index+1)%3])
         if(this.sides.filter((side,index)=> side >= sideSums[(index+1)%3] ? true : false).length>0){
             return false
